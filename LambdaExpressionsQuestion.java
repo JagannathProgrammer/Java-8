@@ -90,7 +90,7 @@ import java.util.List;
 
 public class LambdaExpressionsQuestion{
     public static void main(String[] args) {
-        List<String> Employee = Arrays.asList("Ram", "Sham", "Arjun", "Krish", "Jagan", "Karna");
+        List<String> Employee = Arrays.asList("Ram", "Sham", "Arjun", "Krishna", "Jagannath", "Karna");
         Employee.sort((a,b)-> a.compareTo(b));
         System.out.println(Employee);
 
