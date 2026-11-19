@@ -63,17 +63,6 @@ public class StreamAPIEXP {
         .reduce(0, (a,b)-> a+b);
         System.out.println(sum);
 
-
-        List<Integer> Num = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 8, 6, 3);
-        // ParallelStream
-        // 1. filter() Select elements
-        System.out.println("ParallelStream:");
-        System.out.println("1. Filter:");
-        Num.parallelStream()
-        .filter((n)-> n>20)
-        .forEach((n)-> System.out.println(n));
-
-
     }
     
 }
