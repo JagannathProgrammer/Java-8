@@ -3,14 +3,13 @@ import java.util.function.Predicate;
 public class PredicateInterfaceEXP {
     public static void main(String[] args) {
         Predicate<Integer> P = (n)-> n>10;
-        Predicate<Integer> P1 = (n)-> n<10;
         System.out.println("test() Method: "+P.test(15));
-        System.out.println("test() Method: "+P1.test(15));
+        System.out.println("test() Method: "+P.test(5));
 
         Predicate<String> S = (s)-> s.length()>5;
-        Predicate<String> S1 = (s)-> s.length()<5;
+        
         System.out.println("test() Method: "+S.test("Bharat"));
-        System.out.println("test() Method: "+S1.test("Bharat"));
+        System.out.println("test() Method: "+S.test("India"));
 
         // Predicate Supports Methods and(), or(), negate(), isEqual(), not()
         Predicate<Integer> J = (j)-> j>10;
