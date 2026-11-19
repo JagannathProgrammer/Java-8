@@ -95,6 +95,6 @@ public class FunctionalInterfacesQuestions{
         Predicate<String> P3 = P.or(P1);
 
         System.out.println(P2.test("Arjun"));
-        System.out.println(P3.test("Apple"));
+        System.out.println(P3.test("Karna"));
     }
 }
