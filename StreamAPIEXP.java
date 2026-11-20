@@ -1,67 +1,137 @@
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StreamAPIEXP {
     public static void main(String[] args) {
 
         // Create a List
-        List<Integer> Number = Arrays.asList(10, 20, 30 ,40, 50, 20, 30);
+        List<Integer> Number = Arrays.asList(5,10,15,20,25,30,10,20);
 
-        // Stream API
-        // 1. filter() - Select numbers greater than 20
-        System.out.println("1. Filter:");
-        Number.stream()  // converts the list into a Stream.
-        .filter((N)-> N>20) // selects numbers greater than 20.
-        .forEach((N)-> System.out.println(N));
+        // 1. Example: Without Stream API
+        System.out.println("Without Stream API: ");
+        for(Integer n : Number){
+            if (n>20) {
+                System.out.println(n);
+            }
+        }
 
-        // 2. map() - Multiply each number by 2
-        System.out.println("\n2. Map:");
+        // Example: With Stream API
+        System.out.println("With Stream API: ");
         Number.stream()
-        .map((N)-> N*2)
-        .forEach((N)-> System.out.println(N));
+        .filter(n-> n>20)
+        // .forEach(System.out::println);
+        .forEach(n-> System.out.println(n));
 
-        // 3. sorted() - Sort numbers
-        System.out.println("\n3.sorted:");
+
+        // Stream API - All Intermediate Operations
+        // 1. filter() - Filters elements based on a condition.
+        System.out.println("1. Filter():");
+        Number.stream()  // converts the list into a Stream.
+        .filter((n)-> n>20) // selects numbers greater than 20.
+        .forEach((n)-> System.out.println(n));
+
+        // 2. map() - Converts each element into another value.
+        System.out.println("2. Map():");
+        Number.stream()
+        .map((n)-> n*2)
+        .forEach((n)-> System.out.println(n));
+
+        // 3. sorted() - Used to sort elements in ascending order.
+        System.out.println("3.sorted():");
         Number.stream()
         .sorted()
-        .forEach((N)-> System.out.println(N));
+        .forEach((n)-> System.out.println(n));
 
-        // 4. distinct() - Remove duplicate numbers
-        System.out.println("\n4.distinct:");
+        // 4. distinct() - Used to remove duplicate elements.
+        System.out.println("4.distinct():");
         Number.stream()
         .distinct()
-        .forEach((N)-> System.out.println(N));
+        .forEach((n)-> System.out.println(n));
 
-        // 5. limit() - Get first 3 numbers
-        System.out.println("\n5.limit:");
+        // 5. limit() - Used to get a limited number of elements.
+        System.out.println("5.limit():");
         Number.stream()
         .limit(3)
-        .forEach((N)-> System.out.println(N));
+        .forEach((n)-> System.out.println(n));
 
-        // 6. skip() - Skip first 3 numbers
-        System.out.println("\n6.skip:");
+        // 6. skip() - Used to skip the specified number of elements.
+        System.out.println("6.skip():");
         Number.stream()
         .skip(3)
-        .forEach((N)-> System.out.println(N));
+        .forEach((n)-> System.out.println(n));
 
-        // 7. count() - Count total numbers
-        System.out.println("\n7.count:");
+        // 7. count() - Used to count the number of elements.
+        System.out.println("7.count():");
         long count = Number.stream().count();
         System.out.println(count);
 
-        // 8. min() - Find minimum number
-        System.out.println("\n8. Min:");
+        // 8. min() - Used to find the minimum value.
+        System.out.println("8. Min():");
         System.out.println(Number.stream().min(Integer::compareTo).get());
 
-        // 9. max() - Find maximum number
-        System.out.println("\n9. Max:");
+        // 9. max() - Used to find the maximum value.
+        System.out.println("9. Max():");
         System.out.println(Number.stream().max(Integer::compareTo).get());
 
-        // 10. reduce() - Calculate sum
-        System.out.println("\n10. Reduce:");
+        //10. forEach() - Used to print or perform an action on every element.
+        System.out.println("10. forEach(): ");
+        Number.stream()
+        .forEach(n-> System.out.println(n));
+
+        // 11. collect() - Used to collect stream elements into a collection.
+        System.out.println("11. collect(): ");
+        List<Integer> Result = Number.stream()
+        .filter(n-> n>15)
+        .collect(Collectors.toList());
+        System.out.println(Result);
+
+        // 12. anyMatch() - Checks whether at least one element satisfies the condition.
+        System.out.println("12. anyMatch(): ");
+        boolean B = Number.stream()
+        .anyMatch(n-> n>20);
+        System.out.println(B);
+
+        // 13. allMatch() - Checks whether all elements satisfy the condition.
+        System.out.println("13. allMatch(): ");
+        boolean I = Number.stream()
+        .allMatch(n-> n>2);
+        System.out.println(I);
+
+        // noneMatch() - Checks whether no elements satisfy the condition. 
+        System.out.println("14. noneMatch(): ");
+        boolean A = Number.stream()
+        .noneMatch(n-> n<0);
+        System.out.println(A);
+
+        // 15. findFirst() - Returns the first element.
+        System.out.println("15. findFirst: ");
+        System.out.println(Number.stream().findFirst().get());
+
+        // 16. findAny() - Returns any available element. With a sequential stream, it commonly returns the first element.
+        System.out.println("16. findAny: ");
+        System.out.println(Number.stream().findAny().get());
+
+        // 17. reduce() - Used to combine all elements into a single result.
+        System.out.println(" 17. reduce: ");
         int sum = Number.stream()
         .reduce(0, (a,b)-> a+b);
         System.out.println(sum);
+
+        // 18. toArray() - Used to convert stream elements into an array.
+        System.out.println("18. toArray: ");
+        Object[] O = Number.stream()
+        .toArray();
+        System.out.println(Arrays.toString(O));
+
+
+        // Stream API – All Terminal Operations
+
+        // 1. forEachOrdered() - Processes elements in their original encounter order, especially useful with Parallel Stream.
+        System.out.println("2. forEachOrdered: ");
+        Number.stream()
+        .forEachOrdered(n-> System.out.println(n));
 
     }
     
