@@ -18,6 +18,5 @@ public class FunctionInterfaceEXP {
         // identity() -- Used to return the same input value without changing it.
         Function<Integer,Integer> K = Function.identity();
         System.out.println("identity() Method: "+K.apply(100));
-
     }
 }
